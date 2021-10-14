@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -23,6 +24,7 @@ public class Disciplinas implements Serializable {
     @Column(name="Carga horária", nullable = false)
     private int cargaHoraria;
 
-    @ManyToMany(mappedBy = "Cursos")
-    Set<Cursos> cursos;
+    @ManyToMany
+    @JoinTable(name = "Disciplinas_Cursos", joinColumns = @JoinColumn(name = "ID_da_disciplina"), inverseJoinColumns = @JoinColumn(name = "ID_do_curso"))
+    private List<Cursos> cursos;
 }

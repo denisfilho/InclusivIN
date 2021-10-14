@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -34,6 +35,7 @@ public class Cursos implements Serializable {
     @Column(name="Modalidade", nullable = false)
     private String modalidade;
 
-    @ManyToMany(mappedBy = "Disciplinas")
-    Set<Disciplinas> disciplinas;
+    @ManyToMany(mappedBy = "cursos")
+    private List<Disciplinas> disciplinas;
+
 }
